@@ -9,9 +9,12 @@ import { Dollar } from "../src/index";
 [] Money rounding?
 [X] equals()
 [] hashCode()
+[] Equal null
+[] Equal object
+[] 5 CHF * 2 = 10 CHF
 */
 
-describe("Money Example: ", function () {
+describe("Dollar: ", function () {
   it("test multiplication", function () {
     let five: Dollar = new Dollar(5);
     assert.isTrue(five.times(2).equals(new Dollar(10)));
@@ -21,5 +24,13 @@ describe("Money Example: ", function () {
   it("test equality", function () {
     assert.isTrue(new Dollar(5).equals(new Dollar(5)));
     assert.isNotTrue(new Dollar(6).equals(new Dollar(5)));
+  });
+});
+
+describe("Franc: ", function () {
+  it("test multiplication", function () {
+    let five: Franc = new Franc(5);
+    assert.isTrue(five.times(2).equals(new Franc(10)));
+    assert.isTrue(five.times(3).equals(new Franc(15)));
   });
 });
