@@ -13,7 +13,7 @@ import { Dollar, Franc } from "../src/index";
 [] Equal object
 [x] 5 CHF * 2 = 10 CHF
 [] Dollar/Franc duplication
-[] Common equals
+[x] Common equals
 [] Common times
 */
 
@@ -35,5 +35,10 @@ describe("Franc: ", function () {
     let five: Franc = new Franc(5);
     assert.isTrue(five.times(2).equals(new Franc(10)));
     assert.isTrue(five.times(3).equals(new Franc(15)));
+  });
+
+  it("test equality", function () {
+    assert.isTrue(new Franc(5).equals(new Franc(5)));
+    assert.isNotTrue(new Franc(6).equals(new Franc(5)));
   });
 });
