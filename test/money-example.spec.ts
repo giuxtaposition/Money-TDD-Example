@@ -1,5 +1,5 @@
 import { expect, assert } from "chai";
-import { Dollar, Franc, Money } from "../src/index";
+import { Money } from "../src/index";
 
 /* 
 [] $5 + 10 CHF = $10 if rate is 2:1
@@ -33,19 +33,19 @@ describe("Dollar: ", function () {
 
 describe("Franc: ", function () {
   it("test multiplication", function () {
-    let five: Franc = new Franc(5);
-    assert.isTrue(five.times(2).equals(new Franc(10)));
-    assert.isTrue(five.times(3).equals(new Franc(15)));
+    let five: Money = Money.franc(5);
+    assert.isTrue(five.times(2).equals(Money.franc(10)));
+    assert.isTrue(five.times(3).equals(Money.franc(15)));
   });
 
   it("test equality", function () {
-    assert.isTrue(new Franc(5).equals(new Franc(5)));
-    assert.isNotTrue(new Franc(6).equals(new Franc(5)));
+    assert.isTrue(Money.franc(5).equals(Money.franc(5)));
+    assert.isNotTrue(Money.franc(6).equals(Money.franc(5)));
   });
 });
 
 describe("Money: ", function () {
   it("test equality between Francs and Dollars", function () {
-    assert.isNotTrue(new Franc(5).equals(Money.dollar(5)));
+    assert.isNotTrue(Money.franc(5).equals(Money.dollar(5)));
   });
 });
