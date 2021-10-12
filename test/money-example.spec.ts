@@ -21,7 +21,7 @@ describe("Money Example: ", function () {
   });
 
   it("test equality", function () {
-    assert.equal(new Dollar(5), new Dollar(5));
-    assert.notEqual(new Dollar(6), new Dollar(5));
+    assert.isTrue(new Dollar(5).equals(new Dollar(5)));
+    assert.isNotTrue(new Dollar(6).equals(new Dollar(5)));
   });
 });
