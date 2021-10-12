@@ -1,20 +1,23 @@
-export class Dollar {
-  private _amount: number;
+class Money {
+  protected _amount: number;
+
   constructor(amount: number) {
     this._amount = amount;
   }
 
-  times(multiplier: number) {
-    return new Dollar(this._amount * multiplier);
-  }
-
-  equals(object: Dollar) {
-    let dollar: Dollar = object;
-    return this._amount === dollar._amount;
+  equals(object: object) {
+    let money: Money = object as Money;
+    return this._amount === money.amount;
   }
 
   get amount() {
     return this._amount;
+  }
+}
+
+export class Dollar extends Money {
+  times(multiplier: number) {
+    return new Dollar(this._amount * multiplier);
   }
 }
 
