@@ -1,4 +1,4 @@
-import { expect } from "chai";
+import { expect, assert } from "chai";
 import { Dollar } from "../src/index";
 
 /* 
@@ -21,7 +21,7 @@ describe("Money Example: ", function () {
   });
 
   it("test equality", function () {
-    expect(new Dollar(5)).to.equal(new Dollar(5));
-    expect(new Dollar(6)).not.to.equal(new Dollar(5));
+    assert.equal(new Dollar(5), new Dollar(5));
+    assert.notEqual(new Dollar(6), new Dollar(5));
   });
 });

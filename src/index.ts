@@ -8,6 +8,10 @@ export class Dollar {
     return new Dollar(this._amount * multiplier);
   }
 
+  equals(object: object) {
+    return true;
+  }
+
   get amount() {
     return this._amount;
   }
