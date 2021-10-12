@@ -15,6 +15,7 @@ import { Dollar, Franc } from "../src/index";
 [] Dollar/Franc duplication
 [x] Common equals
 [] Common times
+[] Compare Francs with Dollars
 */
 
 describe("Dollar: ", function () {
@@ -40,5 +41,11 @@ describe("Franc: ", function () {
   it("test equality", function () {
     assert.isTrue(new Franc(5).equals(new Franc(5)));
     assert.isNotTrue(new Franc(6).equals(new Franc(5)));
+  });
+});
+
+describe("Money: ", function () {
+  it("test equality between Francs and Dollars", function () {
+    assert.isNotTrue(new Franc(5).equals(new Dollar(5)));
   });
 });

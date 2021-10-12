@@ -5,9 +5,12 @@ class Money {
     this._amount = amount;
   }
 
-  equals(object: object) {
+  public equals(object: object): boolean {
     let money: Money = object as Money;
-    return this._amount === money.amount;
+    return (
+      this._amount === money._amount &&
+      this.constructor.name === money.constructor.name
+    );
   }
 
   get amount() {
