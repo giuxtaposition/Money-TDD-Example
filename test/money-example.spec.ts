@@ -12,7 +12,9 @@ import { Dollar } from "../src/index";
 describe("Money Example: ", function () {
   it("test multiplication", function () {
     let five: Dollar = new Dollar(5);
-    five.times(2);
-    expect(five.amount).to.equal(10);
+    let product: Dollar = five.times(2);
+    expect(product.amount).to.equal(10);
+    product = five.times(3);
+    expect(product.amount).to.equal(10);
   });
 });
