@@ -1,5 +1,5 @@
 import { expect, assert } from "chai";
-import { Dollar } from "../src/index";
+import { Dollar, Franc } from "../src/index";
 
 /* 
 [] $5 + 10 CHF = $10 if rate is 2:1
@@ -11,7 +11,10 @@ import { Dollar } from "../src/index";
 [] hashCode()
 [] Equal null
 [] Equal object
-[] 5 CHF * 2 = 10 CHF
+[x] 5 CHF * 2 = 10 CHF
+[] Dollar/Franc duplication
+[] Common equals
+[] Common times
 */
 
 describe("Dollar: ", function () {
