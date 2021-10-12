@@ -8,8 +8,9 @@ export class Dollar {
     return new Dollar(this._amount * multiplier);
   }
 
-  equals(object: object) {
-    return true;
+  equals(object: Dollar) {
+    let dollar: Dollar = object;
+    return this._amount === dollar._amount;
   }
 
   get amount() {
