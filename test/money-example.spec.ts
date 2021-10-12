@@ -15,6 +15,6 @@ describe("Money Example: ", function () {
     let product: Dollar = five.times(2);
     expect(product.amount).to.equal(10);
     product = five.times(3);
-    expect(product.amount).to.equal(10);
+    expect(product.amount).to.equal(15);
   });
 });
