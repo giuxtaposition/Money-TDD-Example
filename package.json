@@ -7,7 +7,8 @@
     "precompile": "rimraf app/**/*.js test/**/*.js",
     "compile": "tsc",
     "pretest": "rimraf app/**/*.js test/**/*.js",
-    "test": "nyc mocha"
+    "test": "nyc mocha",
+    "lint": "eslint --ext .ts ."
   },
   "author": "Giulia Ye",
   "license": "MIT",
@@ -15,7 +16,10 @@
     "@types/chai": "^4.2.22",
     "@types/mocha": "^9.0.0",
     "@types/node": "^16.10.3",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
     "chai": "^4.3.4",
+    "eslint": "^8.0.0",
     "mocha": "^9.1.2",
     "nyc": "^15.1.0",
     "rimraf": "^3.0.2",

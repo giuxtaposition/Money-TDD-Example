@@ -8,7 +8,7 @@ export class Money implements Expression {
   }
 
   public equals(object: object): boolean {
-    let money: Money = object as Money;
+    const money: Money = object as Money;
     return (
       this._amount === money._amount && this.currency() === money.currency()
     );
@@ -27,14 +27,14 @@ export class Money implements Expression {
   }
 
   plus(addend: Money): Expression {
-    return new Money(this._amount + addend._amount, this._currency);
+    return new Sum(this, addend);
   }
 
   currency() {
     return this._currency;
   }
 
-  amount() {
+  get amount(): number {
     return this._amount;
   }
 }
@@ -42,7 +42,23 @@ export class Money implements Expression {
 export interface Expression {}
 
 export class Bank {
-  reduce(source: Expression, to: String): Money {
-    return Money.dollar(10);
+  reduce(source: Expression, to: string): Money {
+    const sum: Sum = source as Sum;
+    return sum.reduce(to);
+  }
+}
+
+export class Sum implements Expression {
+  augend: Money;
+  addend: Money;
+
+  constructor(augend: Money, addend: Money) {
+    this.augend = augend;
+    this.addend = addend;
+  }
+
+  reduce(to: string): Money {
+    const amount: number = this.augend.amount + this.addend.amount;
+    return new Money(amount, to);
   }
 }
