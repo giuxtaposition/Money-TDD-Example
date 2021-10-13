@@ -1,5 +1,5 @@
 import { assert } from "chai";
-import { Money } from "../src/index";
+import { Money, Bank, Expression } from "../src/index";
 
 /* 
 [] $5 + 10 CHF = $10 if rate is 2:1
@@ -55,10 +55,10 @@ describe("Money: ", function () {
     assert.equal(Money.franc(1).currency(), "CHF");
   });
   it("test addition", function () {
-    let five : Money = Money.dollar(5)
+    let five: Money = Money.dollar(5);
     let sum: Expression = five.plus(five);
-    let Bank: Bank = new Bank()
-    let reduced : Money = bank.reduce(sum. "USD")
+    let bank: Bank = new Bank();
+    let reduced: Money = bank.reduce(sum, "USD");
     assert.equal(Money.dollar(10), reduced);
   });
 });
