@@ -12,12 +12,12 @@ import { Money } from "../src/index";
 [] Equal null
 [] Equal object
 [x] 5 CHF * 2 = 10 CHF
-[] Dollar/Franc duplication
+[x] Dollar/Franc duplication
 [x] Common equals
 [x] Common times
 [x] Compare Francs with Dollars
 [x] Currency?
-[] Delete testFrancMultiplication
+[x] Delete testFrancMultiplication
 */
 
 describe("Dollar: ", function () {
@@ -53,5 +53,9 @@ describe("Money: ", function () {
   it("test currency", function () {
     assert.equal(Money.dollar(1).currency(), "USD");
     assert.equal(Money.franc(1).currency(), "CHF");
+  });
+  it("test addition", function () {
+    let sum: Money = Money.dollar(5).plus(Money.dollar(5));
+    assert.equal(Money.dollar(10), sum);
   });
 });
