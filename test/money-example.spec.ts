@@ -94,4 +94,8 @@ describe("Money: ", function () {
     const result: Money = bank.reduce(Money.franc(2), "USD");
     assert.isTrue(Money.dollar(1).equals(result));
   });
+
+  it("test identity rate", function () {
+    assert.equal(new Bank().rate("USD", "USD"), 1);
+  });
 });
