@@ -14,6 +14,10 @@ export class Money implements Expression {
     );
   }
 
+  public reduce(): Money {
+    return this;
+  }
+
   static dollar(amount: number): Money {
     return new Money(amount, "USD");
   }
@@ -39,13 +43,13 @@ export class Money implements Expression {
   }
 }
 
-export interface Expression {}
+export interface Expression {
+  reduce(to: string): Money;
+}
 
 export class Bank {
   reduce(source: Expression, to: string): Money {
-    if (source instanceof Money) return source;
-    const sum: Sum = source as Sum;
-    return sum.reduce(to);
+    return source.reduce(to);
   }
 }
 
