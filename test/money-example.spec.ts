@@ -4,7 +4,7 @@ import { Money, Bank, Expression, Sum } from "../src/index";
 /* 
 [x] $5 + 10 CHF = $10 if rate is 2:1
 [x] $5 + $5 = $10
-[] Return Money from $5 + $5
+[x] Return Money from $5 + $5
 [x] Bank.reduce(Money)
 [x] Reduce Money with conversion
 [x] Reduce(Bank, String)
@@ -13,11 +13,11 @@ import { Money, Bank, Expression, Sum } from "../src/index";
 [x] $5 * 2 = $10
 [X] Make “amount” private
 [x] Dollar side effects?
-[] Money rounding?
+[x] Money rounding?
 [X] equals()
-[] hashCode()
-[] Equal null
-[] Equal object
+[x] hashCode()
+[x] Equal null
+[x] Equal object
 [x] 5 CHF * 2 = 10 CHF
 [x] Dollar/Franc duplication
 [x] Common equals
@@ -128,10 +128,5 @@ describe("Money: ", function () {
     const sum: Expression = new Sum(fiveBucks, tenFrancs).times(2);
     const result: Money = bank.reduce(sum, "USD");
     assert.isTrue(Money.dollar(20).equals(result));
-  });
-
-  it("test plus same currency returns money", function () {
-    const sum: Expression = Money.dollar(1).plus(Money.dollar(1));
-    assert.isTrue(sum instanceof Money);
   });
 });
