@@ -10,8 +10,7 @@ export class Money {
   public equals(object: object): boolean {
     let money: Money = object as Money;
     return (
-      this._amount === money._amount &&
-      this.constructor.name === money.constructor.name
+      this._amount === money._amount && this.currency() === money.currency()
     );
   }
 
@@ -24,7 +23,7 @@ export class Money {
   }
 
   times(multiplier: number): Money {
-    return null;
+    return new Money(this._amount * multiplier, this._currency);
   }
 
   currency() {
@@ -40,18 +39,10 @@ export class Dollar extends Money {
   constructor(amount: number, currency: string) {
     super(amount, currency);
   }
-
-  times(multiplier: number): Money {
-    return new Dollar(this._amount * multiplier, this._currency);
-  }
 }
 
 export class Franc extends Money {
   constructor(amount: number, currency: string) {
     super(amount, currency);
-  }
-
-  times(multiplier: number): Money {
-    return new Franc(this._amount * multiplier, this._currency);
   }
 }
