@@ -51,7 +51,7 @@ describe("Money: ", function () {
     assert.isNotTrue(Money.franc(5).equals(Money.dollar(5)));
   });
   it("test currency", function () {
-    assert.equal(Money.dollar(1).currency(), "USD";
-    assert.equal(Money.franc(1).currency(), "CHF")
-  })
+    assert.equal(Money.dollar(1).currency(), "USD");
+    assert.equal(Money.franc(1).currency(), "CHF");
+  });
 });

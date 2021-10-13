@@ -1,9 +1,6 @@
 export abstract class Money {
   protected _amount: number;
-
-  constructor(amount: number) {
-    this._amount = amount;
-  }
+  protected _currency: string;
 
   public equals(object: object): boolean {
     let money: Money = object as Money;
@@ -14,28 +11,52 @@ export abstract class Money {
   }
 
   static dollar(amount: number): Dollar {
-    return new Dollar(amount);
+    return new Dollar(amount, "USD");
   }
 
   static franc(amount: number): Franc {
-    return new Franc(amount);
+    return new Franc(amount, "CHF");
   }
 
   abstract times(multiplier: number): Money;
 
-  get amount() {
+  currency() {
+    return this._currency;
+  }
+
+  amount() {
     return this._amount;
   }
 }
 
 export class Dollar extends Money {
+  constructor(amount: number, currency: string) {
+    super();
+    this._amount = amount;
+    this._currency = currency;
+  }
+
   times(multiplier: number): Money {
-    return new Dollar(this._amount * multiplier);
+    return Money.dollar(this._amount * multiplier);
+  }
+
+  currency(): string {
+    return this._currency;
   }
 }
 
 export class Franc extends Money {
+  constructor(amount: number, currency: string) {
+    super();
+    this._amount = amount;
+    this._currency = currency;
+  }
+
   times(multiplier: number): Money {
-    return new Franc(this._amount * multiplier);
+    return Money.franc(this._amount * multiplier);
+  }
+
+  currency(): string {
+    return this._currency;
   }
 }
