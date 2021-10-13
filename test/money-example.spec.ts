@@ -3,6 +3,8 @@ import { Money, Bank, Expression } from "../src/index";
 
 /* 
 [] $5 + 10 CHF = $10 if rate is 2:1
+[] $5 + $5 = $10
+[] Return Money from $5 + $5
 [x] $5 * 2 = $10
 [X] Make “amount” private
 [x] Dollar side effects?
@@ -59,6 +61,14 @@ describe("Money: ", function () {
     let sum: Expression = five.plus(five);
     let bank: Bank = new Bank();
     let reduced: Money = bank.reduce(sum, "USD");
-    assert.equal(Money.dollar(10), reduced);
+    assert.isTrue(Money.dollar(10).equals(reduced));
+  });
+
+  it("test plus returns sum", function () {
+    let five: Money = Money.dollar(5);
+    let result: Expression = five.plus(five);
+    let sum: Sum = result as Sum;
+    assert.isTrue(five.equals(sum.augend));
+    assert.isTrue(five.equals(sum.addend));
   });
 });
