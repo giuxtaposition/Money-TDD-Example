@@ -9,7 +9,7 @@ import { Money, Bank, Expression, Sum } from "../src/index";
 [x] Reduce Money with conversion
 [x] Reduce(Bank, String)
 [x] Sum.plus
-[] Expression.times
+[x] Expression.times
 [x] $5 * 2 = $10
 [X] Make “amount” private
 [x] Dollar side effects?
