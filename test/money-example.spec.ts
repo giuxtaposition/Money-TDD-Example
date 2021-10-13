@@ -56,6 +56,6 @@ describe("Money: ", function () {
   });
   it("test addition", function () {
     let sum: Money = Money.dollar(5).plus(Money.dollar(5));
-    assert.equal(Money.dollar(10), sum);
+    assert.isTrue(Money.dollar(10).equals(sum));
   });
 });

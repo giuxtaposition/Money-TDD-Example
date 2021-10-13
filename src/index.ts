@@ -26,6 +26,10 @@ export class Money {
     return new Money(this._amount * multiplier, this._currency);
   }
 
+  plus(addend: Money): Money {
+    return new Money(this._amount + addend._amount, this._currency);
+  }
+
   currency() {
     return this._currency;
   }
