@@ -16,6 +16,8 @@ import { Money } from "../src/index";
 [x] Common equals
 [] Common times
 [x] Compare Francs with Dollars
+[] Currency?
+[] Delete testFrancMultiplication
 */
 
 describe("Dollar: ", function () {
@@ -48,4 +50,8 @@ describe("Money: ", function () {
   it("test equality between Francs and Dollars", function () {
     assert.isNotTrue(Money.franc(5).equals(Money.dollar(5)));
   });
+  it("test currency", function () {
+    assert.equal(Money.dollar(1).currency(), "USD";
+    assert.equal(Money.franc(1).currency(), "CHF")
+  })
 });
