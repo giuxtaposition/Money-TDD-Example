@@ -55,7 +55,10 @@ describe("Money: ", function () {
     assert.equal(Money.franc(1).currency(), "CHF");
   });
   it("test addition", function () {
-    let sum: Money = Money.dollar(5).plus(Money.dollar(5));
-    assert.isTrue(Money.dollar(10).equals(sum));
+    let five : Money = Money.dollar(5)
+    let sum: Expression = five.plus(five);
+    let Bank: Bank = new Bank()
+    let reduced : Money = bank.reduce(sum. "USD")
+    assert.equal(Money.dollar(10), reduced);
   });
 });
