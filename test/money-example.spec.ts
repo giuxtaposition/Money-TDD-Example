@@ -1,5 +1,5 @@
 import { assert } from "chai";
-import { Money, Franc } from "../src/index";
+import { Money } from "../src/index";
 
 /* 
 [] $5 + 10 CHF = $10 if rate is 2:1
@@ -14,7 +14,7 @@ import { Money, Franc } from "../src/index";
 [x] 5 CHF * 2 = 10 CHF
 [] Dollar/Franc duplication
 [x] Common equals
-[] Common times
+[x] Common times
 [x] Compare Francs with Dollars
 [x] Currency?
 [] Delete testFrancMultiplication
@@ -53,8 +53,5 @@ describe("Money: ", function () {
   it("test currency", function () {
     assert.equal(Money.dollar(1).currency(), "USD");
     assert.equal(Money.franc(1).currency(), "CHF");
-  });
-  it("test different class equality", function () {
-    assert.isTrue(new Money(10, "CHF").equals(new Franc(10, "CHF")));
   });
 });
