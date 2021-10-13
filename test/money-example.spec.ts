@@ -8,7 +8,7 @@ import { Money, Bank, Expression, Sum } from "../src/index";
 [x] Bank.reduce(Money)
 [x] Reduce Money with conversion
 [x] Reduce(Bank, String)
-[] Sum.plus
+[x] Sum.plus
 [] Expression.times
 [x] $5 * 2 = $10
 [X] Make “amount” private
@@ -30,8 +30,8 @@ import { Money, Bank, Expression, Sum } from "../src/index";
 describe("Dollar: ", function () {
   it("test multiplication", function () {
     const five: Money = Money.dollar(5);
-    assert.isTrue(five.times(2).equals(Money.dollar(10)));
-    assert.isTrue(five.times(3).equals(Money.dollar(15)));
+    assert.isTrue(Money.dollar(10).equals(five.times(2)));
+    assert.isTrue(Money.dollar(15).equals(five.times(3)));
   });
 
   it("test equality", function () {
@@ -43,8 +43,8 @@ describe("Dollar: ", function () {
 describe("Franc: ", function () {
   it("test multiplication", function () {
     const five: Money = Money.franc(5);
-    assert.isTrue(five.times(2).equals(Money.franc(10)));
-    assert.isTrue(five.times(3).equals(Money.franc(15)));
+    assert.isTrue(Money.franc(10).equals(five.times(2)));
+    assert.isTrue(Money.franc(15).equals(five.times(3)));
   });
 
   it("test equality", function () {

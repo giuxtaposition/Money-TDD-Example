@@ -80,8 +80,8 @@ export class Sum implements Expression {
     this.addend = addend;
   }
 
-  public plus(_addend: Expression): Expression {
-    return null;
+  public plus(addend: Expression): Expression {
+    return new Sum(this, addend);
   }
 
   reduce(bank: Bank, to: string): Money {
