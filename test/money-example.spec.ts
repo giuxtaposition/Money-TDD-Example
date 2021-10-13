@@ -129,4 +129,9 @@ describe("Money: ", function () {
     const result: Money = bank.reduce(sum, "USD");
     assert.isTrue(Money.dollar(20).equals(result));
   });
+
+  it("test plus same currency returns money", function () {
+    const sum: Expression = Money.dollar(1).plus(Money.dollar(1));
+    assert.isTrue(sum instanceof Money);
+  });
 });
