@@ -87,4 +87,11 @@ describe("Money: ", function () {
     const result: Money = bank.reduce(Money.dollar(1), "USD");
     assert.isTrue(Money.dollar(1).equals(result));
   });
+
+  it("test reduce money with different currency", function () {
+    const bank: Bank = new Bank();
+    bank.addRate("CHF", "USD", 2);
+    const result: Money = bank.reduce(Money.franc(2), "USD");
+    assert.isTrue(Money.dollar(1).equals(result));
+  });
 });
