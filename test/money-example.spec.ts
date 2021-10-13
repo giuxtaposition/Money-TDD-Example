@@ -2,12 +2,14 @@ import { assert } from "chai";
 import { Money, Bank, Expression, Sum } from "../src/index";
 
 /* 
-[] $5 + 10 CHF = $10 if rate is 2:1
+[x] $5 + 10 CHF = $10 if rate is 2:1
 [x] $5 + $5 = $10
 [] Return Money from $5 + $5
 [x] Bank.reduce(Money)
 [x] Reduce Money with conversion
 [x] Reduce(Bank, String)
+[] Sum.plus
+[] Expression.times
 [x] $5 * 2 = $10
 [X] Make “amount” private
 [x] Dollar side effects?
@@ -100,11 +102,21 @@ describe("Money: ", function () {
   });
 
   it("test mixed addition", function () {
-    const fiveBucks = Money.dollar(5);
-    const tenFrancs = Money.franc(10);
+    const fiveBucks: Expression = Money.dollar(5);
+    const tenFrancs: Expression = Money.franc(10);
     const bank = new Bank();
     bank.addRate("CHF", "USD", 2);
     const result = bank.reduce(fiveBucks.plus(tenFrancs), "USD");
     assert.isTrue(Money.dollar(10).equals(result));
+  });
+
+  it("test sum plus money", function () {
+    const fiveBucks: Expression = Money.dollar(5);
+    const tenFrancs: Expression = Money.franc(10);
+    const bank = new Bank();
+    bank.addRate("CHF", "USD", 2);
+    const sum: Expression = new Sum(fiveBucks, tenFrancs).plus(fiveBucks);
+    const result: Money = bank.reduce(sum, "USD");
+    assert.isTrue(Money.dollar(15).equals(result));
   });
 });
