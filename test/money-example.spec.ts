@@ -3,11 +3,11 @@ import { Money, Bank, Expression, Sum } from "../src/index";
 
 /* 
 [] $5 + 10 CHF = $10 if rate is 2:1
-[] $5 + $5 = $10
+[x] $5 + $5 = $10
 [] Return Money from $5 + $5
 [x] Bank.reduce(Money)
-[] Reduce Money with conversion
-[] Reduce(Bank, String)
+[x] Reduce Money with conversion
+[x] Reduce(Bank, String)
 [x] $5 * 2 = $10
 [X] Make “amount” private
 [x] Dollar side effects?
@@ -97,5 +97,14 @@ describe("Money: ", function () {
 
   it("test identity rate", function () {
     assert.equal(new Bank().rate("USD", "USD"), 1);
+  });
+
+  it("test mixed addition", function () {
+    const fiveBucks = Money.dollar(5);
+    const tenFrancs = Money.franc(10);
+    const bank = new Bank();
+    bank.addRate("CHF", "USD", 2);
+    const result = bank.reduce(fiveBucks.plus(tenFrancs), "USD");
+    assert.isTrue(Money.dollar(10).equals(result));
   });
 });
